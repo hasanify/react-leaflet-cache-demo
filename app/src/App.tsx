@@ -5,6 +5,10 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 const iconSize = [20, 35];
 const ALIGARH = [27.8974, 78.088] as LatLngExpression;
 
+const removeWatermark = () => {
+  document.querySelector('a[href="https://leafletjs.com"]')?.remove();
+};
+
 function App() {
   return (
     <>
@@ -13,6 +17,7 @@ function App() {
         zoom={8}
         scrollWheelZoom={true}
         zoomControl={true}
+        whenReady={() => removeWatermark()}
       >
         <TileLayer url="http://localhost:3001/map?s={s}&z={z}&x={x}&y={y}" />
         <Marker position={ALIGARH} icon={MapMarkerIcon}>
